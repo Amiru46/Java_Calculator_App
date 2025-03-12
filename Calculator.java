@@ -37,8 +37,8 @@ public class Calculator implements ActionListener {
         divButton = new JButton("/");
         decButton = new JButton(".");
         equButton = new JButton("=");
-        delButton = new JButton("-");
-        clrButton = new JButton("AC");
+        delButton = new JButton("Delete");
+        clrButton = new JButton("Clear");
 
         functionButtons[0] = addButton;
         functionButtons[1] = subButton;
@@ -108,6 +108,77 @@ public class Calculator implements ActionListener {
             if (e.getSource() == numberButtons[i]) {
 
                 textField.setText(textField.getText().concat(String.valueOf(i)));
+
+            }
+        }
+
+        if (e.getSource() == decButton) {
+            textField.setText(textField.getText().concat("."));
+        }
+
+        if (e.getSource() == addButton) {
+
+            num1 = Double.parseDouble(textField.getText());
+            operator = '+';
+            textField.setText("");
+        }
+
+        if (e.getSource() == subButton) {
+
+            num1 = Double.parseDouble(textField.getText());
+            operator = '-';
+            textField.setText("");
+        }
+
+        if (e.getSource() == mulButton) {
+
+            num1 = Double.parseDouble(textField.getText());
+            operator = '*';
+            textField.setText("");
+        }
+
+        if (e.getSource() == divButton) {
+
+            num1 = Double.parseDouble(textField.getText());
+            operator = '/';
+            textField.setText("");
+        }
+
+        if (e.getSource() == equButton) {
+            num2 = Double.parseDouble(textField.getText());
+
+            switch (operator) {
+
+                case '+':
+                    result = num1 + num2;
+                    break;
+                case '-':
+                    result = num1 - num2;
+                    break;
+                case '*':
+                    result = num1 * num2;
+                    break;
+                case '/':
+                    result = num1 / num2;
+                    break;
+            }
+
+            textField.setText(String.valueOf(result));
+            num1 = result;
+        }
+
+        if (e.getSource() == clrButton) {
+
+            textField.setText("");
+        }
+
+        if (e.getSource() == delButton) {
+
+            String string = textField.getText();
+            textField.setText("");
+
+            for (int i = 0; i < string.length() - 1; i++) {
+            textField.setText(textField.getText()+string.charAt(i));
 
             }
         }
