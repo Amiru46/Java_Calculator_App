@@ -163,6 +163,10 @@ public class Calculator implements ActionListener {
                     result = num1 * num2;
                     break;
                 case '/':
+                    if (num2 == 0) {
+                        textField.setText("Error: Div by zero");
+                        return;
+                    }
                     result = num1 / num2;
                     break;
             }
